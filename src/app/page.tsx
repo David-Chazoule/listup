@@ -14,8 +14,9 @@ export default function Home() {
           height={38}
           priority
         />
-        <Link href='/todo'><button>entrer</button></Link>
-       
+        <Link href="/todo">
+          <button>entrer</button>
+        </Link>
 
         <div className={styles.ctas}>
           <a
