@@ -1,0 +1,38 @@
+.task_container {
+  display: flex;
+  width: 100%;
+
+  .task_card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 6px;
+    align-items: center;
+    .card {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+     
+      .img_container {
+        display: flex;
+        width: 100px;
+        align-items: center;
+        justify-content: center;
+
+        img {
+          width: 30px;
+          height: auto;
+          margin: 4px;
+        }
+      }
+    }
+
+    .line {
+      display: flex;
+      width: 100%;
+      border-bottom: 1px solid black;
+    }
+  }
+}

@@ -16,6 +16,7 @@ function page() {
 
         <div className={styles.tasks}>
           <Tasks />
+          <Tasks />
         </div>
       </div>
     </div>
