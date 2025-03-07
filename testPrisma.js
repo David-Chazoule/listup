@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
@@ -7,7 +7,7 @@ async function main() {
   const newTask = await prisma.task.create({
     data: {
       text: "Faire les courses",
-      dueDate: new Date('2025-03-10'),
+      dueDate: new Date("2025-03-10"),
       completed: false,
     },
   });
@@ -20,7 +20,7 @@ async function main() {
 }
 
 main()
-  .catch(e => {
+  .catch((e) => {
     throw e;
   })
   .finally(async () => {
