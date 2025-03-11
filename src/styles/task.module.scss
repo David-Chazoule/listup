@@ -1,6 +1,8 @@
 .task_container {
   display: flex;
   width: 100%;
+  align-items: center;
+  justify-content: center;
 
   .task_card {
     display: flex;

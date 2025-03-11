@@ -4,12 +4,16 @@ import edit from "../../styles/img/edit.png";
 import cancel from "../../styles/img/cancel.png";
 import styles from "../../styles/task.module.scss";
 
-type TasksProps = {
+type TaskProps = {
   id: number;
   text: string;
   createdAt: string;
   dueDate: string;
   completed: boolean;
+  openModal: (
+    type: "edit" | "delete",
+    task: Omit<TaskProps, "openModal">
+  ) => void;
 };
 
 function formatDate(dateString: string | null | undefined): string {
@@ -18,26 +22,40 @@ function formatDate(dateString: string | null | undefined): string {
   }
 
   const date = new Date(dateString);
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  return `${day}-${month}-${year}`;
+  return date.toLocaleDateString("fr-FR");
 }
 
-function Tasks({ id, text, createdAt, dueDate, completed }: TasksProps) {
-  const formattedCreatedAt = formatDate(createdAt);
-  const formattedDueDate = formatDate(dueDate);
-
+function Tasks({
+  id,
+  text,
+  createdAt,
+  dueDate,
+  completed,
+  openModal,
+}: TaskProps) {
   return (
     <div key={id} className={styles.task_container}>
       <div className={styles.task_card}>
         <div className={styles.card}>
+          <input type="checkbox" checked={completed} readOnly />
           <p className={styles.task_action}>{text}</p>
-          <p>{formattedCreatedAt}</p>
-          <p>{formattedDueDate}</p>
+          <p>{formatDate(createdAt)}</p>
+          <p>{formatDate(dueDate)}</p>
           <span className={styles.img_container}>
-            <Image src={edit} alt="edit-logo" />
-            <Image src={cancel} alt="cancel-logo" />
+            <Image
+              src={edit}
+              alt="edit-logo"
+              onClick={() =>
+                openModal("edit", { id, text, createdAt, dueDate, completed })
+              }
+            />
+            <Image
+              src={cancel}
+              alt="cancel-logo"
+              onClick={() =>
+                openModal("delete", { id, text, createdAt, dueDate, completed })
+              }
+            />
           </span>
         </div>
         <div className={styles.line}></div>
