@@ -1,10 +1,42 @@
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 import { prisma } from "@/lib/prisma";
 
-// GET: Récupérer toutes les tâches
-export async function GET() {
+type TaskFilters = {
+  completed?: boolean;
+  dueDate?: { equals: Date };
+  createdAt?: { equals: Date };
+};
+
+export async function GET(request: NextRequest) {
   try {
-    const tasks = await prisma.task.findMany();
+    const { searchParams } = new URL(request.url);
+
+    const completed = searchParams.get("completed");
+    const dueDate = searchParams.get("dueDate");
+    const createdAt = searchParams.get("createdAt");
+
+    const filters: TaskFilters = {};
+
+    if (completed !== null) {
+      filters.completed = completed === "true";
+    }
+
+    if (dueDate) {
+      filters.dueDate = {
+        equals: new Date(dueDate),
+      };
+    }
+
+    if (createdAt) {
+      filters.createdAt = {
+        equals: new Date(createdAt),
+      };
+    }
+
+    const tasks = await prisma.task.findMany({
+      where: filters,
+    });
+
     return NextResponse.json(tasks);
   } catch (error) {
     if (error instanceof Error) {
@@ -17,8 +49,6 @@ export async function GET() {
     }
   }
 }
-
-// Post : Ajouter une tâche
 
 export async function POST(req: Request) {
   try {
