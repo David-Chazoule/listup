@@ -14,6 +14,7 @@ type TaskProps = {
     type: "edit" | "delete",
     task: Omit<TaskProps, "openModal">
   ) => void;
+  
 };
 
 function formatDate(dateString: string | null | undefined): string {

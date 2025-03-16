@@ -57,6 +57,7 @@ function TodoForm() {
   useEffect(() => {
     fetchTasks();
   }, [completedFilter, sortBy]);
+  
   const handleAddTask = () => {
     setModalType("add");
     setSelectedTask(undefined);
