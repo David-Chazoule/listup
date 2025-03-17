@@ -5,16 +5,16 @@ import cancel from "../../styles/img/cancel.png";
 import styles from "../../styles/task.module.scss";
 
 type TaskProps = {
-  id: number;
+  id: string;
   text: string;
   createdAt: string;
   dueDate: string;
   completed: boolean;
   openModal: (
     type: "edit" | "delete",
-    task: Omit<TaskProps, "openModal">
+    task: Omit<TaskProps, "openModal" | "checkedFunction">
   ) => void;
-  
+  checkedFunction: (id: string, completed: boolean) => void;
 };
 
 function formatDate(dateString: string | null | undefined): string {
@@ -33,12 +33,24 @@ function Tasks({
   dueDate,
   completed,
   openModal,
+  checkedFunction,
 }: TaskProps) {
+  const handleCheckboxChange = async (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const newCompleted = e.target.checked;
+    await checkedFunction(id, newCompleted);
+  };
+
   return (
     <div key={id} className={styles.task_container}>
       <div className={styles.task_card}>
         <div className={styles.card}>
-          <input type="checkbox" checked={completed} readOnly />
+          <input
+            type="checkbox"
+            checked={completed}
+            onChange={handleCheckboxChange}
+          />
           <p className={styles.task_action}>{text}</p>
           <p>{formatDate(createdAt)}</p>
           <p>{formatDate(dueDate)}</p>

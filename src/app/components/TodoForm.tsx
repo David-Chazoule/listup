@@ -4,7 +4,7 @@ import Tasks from "../components/Tasks";
 import axios from "axios";
 import Modal from "./Modal";
 export type Task = {
-  id: number;
+  id: string;
   text: string;
   createdAt: string;
   dueDate: string;
@@ -32,18 +32,16 @@ function TodoForm() {
       let sortedTasks = result.data;
 
       if (sortBy === "createdAt") {
-        
         sortedTasks = result.data.sort((a: Task, b: Task) => {
           return (
             new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
           );
         });
       } else if (sortBy === "dueDate") {
-        
         sortedTasks = result.data.sort((a: Task, b: Task) => {
           if (a.dueDate === null && b.dueDate === null) return 0;
-          if (a.dueDate === null) return 1; 
-          if (b.dueDate === null) return -1; 
+          if (a.dueDate === null) return 1;
+          if (b.dueDate === null) return -1;
           return new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime();
         });
       }
@@ -54,10 +52,26 @@ function TodoForm() {
     }
   };
 
+  const checkedFunction = async (taskId: string, completed: boolean) => {
+    try {
+      await axios.put(`http://localhost:3000/api/tasks`, {
+        id: taskId,
+        completed,
+      });
+      setListTasks((prevTasks) =>
+        prevTasks.map((task) =>
+          task.id === taskId ? { ...task, completed } : task
+        )
+      );
+    } catch (error) {
+      console.error("Erreur lors de la mise à jour de la tâche :", error);
+    }
+  };
+
   useEffect(() => {
     fetchTasks();
   }, [completedFilter, sortBy]);
-  
+
   const handleAddTask = () => {
     setModalType("add");
     setSelectedTask(undefined);
@@ -100,6 +114,7 @@ function TodoForm() {
                   ? handleEditTask("edit", task)
                   : handleDeleteTask("delete", task)
               }
+              checkedFunction={checkedFunction}
             />
           ))}
         </div>
@@ -109,14 +124,12 @@ function TodoForm() {
             finished tasks
           </button>
           <button onClick={() => setCompletedFilter(false)}>
-          unfinished tasks
+            unfinished tasks
           </button>
           <button onClick={() => setSortBy("createdAt")}>
-          sort by creation date
+            sort by creation date
           </button>
-          <button onClick={() => setSortBy("dueDate")}>
-          sort by due date
-          </button>
+          <button onClick={() => setSortBy("dueDate")}>sort by due date</button>
         </div>
       </div>
 
