@@ -3,38 +3,60 @@
   width: 100%;
   align-items: center;
   justify-content: center;
+  background-color: ghostwhite;
 
   .task_card {
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-bottom: 6px;
+    margin: 12px 0;
     align-items: center;
+
     .card {
       display: flex;
-      width: 100%;
+      width: 90%;
       align-items: center;
       justify-content: space-between;
-      padding: 10px;
-     
+      padding: 14px;
+      background-color: white;
+      border: 1px solid black;
+      border-radius: 10px;
+
       .img_container {
         display: flex;
-        width: 100px;
+        width: 160px;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
 
         img {
-          width: 30px;
+          width: 20px;
           height: auto;
           margin: 4px;
+          cursor: pointer;
         }
       }
     }
 
-    .line {
+    .taskCheck {
       display: flex;
-      width: 100%;
-      border-bottom: 1px solid black;
+      align-items: center;
+      justify-content: flex-start;
+      width: 160px;
+
+      input {
+        margin: 0 4px 0 0;
+      }
+    }
+
+    span {
+      display: flex;
+
+      align-items: center;
+      justify-content: flex-start;
+      width: 160px;
+      .task_action {
+        margin-left: 34px;
+      }
     }
   }
 }

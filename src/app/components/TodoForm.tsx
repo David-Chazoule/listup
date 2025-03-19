@@ -97,7 +97,18 @@ function TodoForm() {
       </div>
       <div className={styles.tasksContainer}>
         <div className={styles.titleTask}>
-          <p>Task</p> <p>Action</p>
+          <span>
+            <p>Task</p>
+          </span>
+          <span>
+            <p>Created date</p>
+          </span>
+          <span>
+            <p>Due Date</p>
+          </span>
+          <span>
+            <p>Action</p>
+          </span>
         </div>
 
         <div className={styles.tasks}>
@@ -118,18 +129,18 @@ function TodoForm() {
             />
           ))}
         </div>
-        <div className="btn-filters">
-          <button onClick={() => setCompletedFilter(null)}>all tasks</button>
+        <div className={styles.btnFilters}>
+          <button onClick={() => setCompletedFilter(null)}>All tasks</button>
           <button onClick={() => setCompletedFilter(true)}>
-            finished tasks
+            Finished tasks
           </button>
           <button onClick={() => setCompletedFilter(false)}>
-            unfinished tasks
+            Unfinished tasks
           </button>
           <button onClick={() => setSortBy("createdAt")}>
-            sort by creation date
+            Sort by creation date
           </button>
-          <button onClick={() => setSortBy("dueDate")}>sort by due date</button>
+          <button onClick={() => setSortBy("dueDate")}>Sort by due date</button>
         </div>
       </div>
 

@@ -46,14 +46,24 @@ function Tasks({
     <div key={id} className={styles.task_container}>
       <div className={styles.task_card}>
         <div className={styles.card}>
-          <input
-            type="checkbox"
-            checked={completed}
-            onChange={handleCheckboxChange}
-          />
-          <p className={styles.task_action}>{text}</p>
-          <p>{formatDate(createdAt)}</p>
-          <p>{formatDate(dueDate)}</p>
+          <span className={styles.taskCheck}>
+            <input
+              type="checkbox"
+              checked={completed}
+              onChange={handleCheckboxChange}
+            />
+            <p>{text}</p>
+          </span>
+          <span>
+            <p>{formatDate(createdAt)}</p>
+          </span>
+          <span>
+            {" "}
+            <p className={dueDate ? "" : styles.task_action}>
+              {formatDate(dueDate)}
+            </p>
+          </span>
+
           <span className={styles.img_container}>
             <Image
               src={edit}
@@ -71,7 +81,6 @@ function Tasks({
             />
           </span>
         </div>
-        <div className={styles.line}></div>
       </div>
     </div>
   );
