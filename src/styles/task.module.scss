@@ -9,18 +9,18 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin: 12px 0;
+    // margin: 12px 0;
     align-items: center;
 
     .card {
       display: flex;
-      width: 90%;
+      width: 100%;
       align-items: center;
       justify-content: space-between;
       padding: 14px;
       background-color: white;
-      border: 1px solid black;
-      border-radius: 10px;
+      border-bottom: 1px solid black;
+      // border-radius: 10px;
 
       .img_container {
         display: flex;
@@ -35,6 +35,17 @@
           cursor: pointer;
         }
       }
+    }
+
+    .taskCompleted{
+      background-color: #E0E0E0;
+     
+      
+
+      .completedText {
+        text-decoration: line-through;
+      }
+    
     }
 
     .taskCheck {
@@ -59,4 +70,6 @@
       }
     }
   }
+
+  
 }

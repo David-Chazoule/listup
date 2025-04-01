@@ -45,17 +45,21 @@ function Tasks({
   return (
     <div key={id} className={styles.task_container}>
       <div className={styles.task_card}>
-        <div className={styles.card}>
+        <div
+          className={`${styles.card} ${completed ? styles.taskCompleted : ""}`}
+        >
           <span className={styles.taskCheck}>
             <input
               type="checkbox"
               checked={completed}
               onChange={handleCheckboxChange}
             />
-            <p>{text}</p>
+            <p className={completed ? styles.completedText : ""}>{text}</p>
           </span>
           <span>
-            <p>{formatDate(createdAt)}</p>
+            <p className={completed ? styles.completedText : ""}>
+              {formatDate(createdAt)}
+            </p>
           </span>
           <span>
             {" "}
