@@ -7,6 +7,12 @@ type TaskFilters = {
   createdAt?: { equals: Date };
 };
 
+type TaskOrderBy = {
+  completed?: "asc" | "desc";
+  dueDate?: "asc" | "desc";
+  createdAt?: "asc" | "desc";
+}[];
+
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
@@ -14,10 +20,12 @@ export async function GET(request: NextRequest) {
     const completed = searchParams.get("completed");
     const dueDate = searchParams.get("dueDate");
     const createdAt = searchParams.get("createdAt");
+    const sortBy = searchParams.get("sortBy");
 
     const filters: TaskFilters = {};
+    const orderBy: TaskOrderBy = [];
 
-    if (completed !== null) {
+    if (completed) {
       filters.completed = completed === "true";
     }
 
@@ -33,8 +41,17 @@ export async function GET(request: NextRequest) {
       };
     }
 
+    if (sortBy === "dueDate") {
+      orderBy.push({ dueDate: "asc" });
+    } else if (sortBy === "createdAt") {
+      orderBy.push({ createdAt: "asc" });
+    }
+
+    orderBy.push({ completed: "asc" });
+
     const tasks = await prisma.task.findMany({
       where: filters,
+      orderBy,
     });
 
     return NextResponse.json(tasks);

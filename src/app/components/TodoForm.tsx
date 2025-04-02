@@ -33,12 +33,17 @@ function TodoForm() {
 
       if (sortBy === "createdAt") {
         sortedTasks = result.data.sort((a: Task, b: Task) => {
+          if (a.completed !== b.completed) {
+            return a.completed ? 1 : -1;
+          }
+
           return (
             new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
           );
         });
       } else if (sortBy === "dueDate") {
         sortedTasks = result.data.sort((a: Task, b: Task) => {
+          
           if (a.dueDate === null && b.dueDate === null) return 0;
           if (a.dueDate === null) return 1;
           if (b.dueDate === null) return -1;
