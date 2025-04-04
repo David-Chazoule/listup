@@ -43,7 +43,6 @@ function TodoForm() {
         });
       } else if (sortBy === "dueDate") {
         sortedTasks = result.data.sort((a: Task, b: Task) => {
-          
           if (a.dueDate === null && b.dueDate === null) return 0;
           if (a.dueDate === null) return 1;
           if (b.dueDate === null) return -1;
@@ -98,11 +97,14 @@ function TodoForm() {
   return (
     <div className={styles.todoContainer}>
       <div className={styles.buttonContainer}>
-        <button onClick={handleAddTask}>ADD NEW TASK +</button>
+        <button onClick={handleAddTask} title="add a new task ?">
+          ADD NEW TASK +
+        </button>
       </div>
       <div className={styles.tasksContainer}>
         <div className={styles.titleTask}>
           <span>
+            <input className={styles.titleInput} type="checkbox" />
             <p>Task</p>
           </span>
           <span>
@@ -135,17 +137,30 @@ function TodoForm() {
           ))}
         </div>
         <div className={styles.btnFilters}>
-          <button onClick={() => setCompletedFilter(null)}>All tasks</button>
-          <button onClick={() => setCompletedFilter(true)}>
+          <button onClick={() => setCompletedFilter(null)} title="all tasks">
+            All tasks
+          </button>
+          <button
+            onClick={() => setCompletedFilter(true)}
+            title="finished tasks"
+          >
             Finished tasks
           </button>
-          <button onClick={() => setCompletedFilter(false)}>
+          <button
+            onClick={() => setCompletedFilter(false)}
+            title=" unfinished tasks"
+          >
             Unfinished tasks
           </button>
-          <button onClick={() => setSortBy("createdAt")}>
+          <button
+            onClick={() => setSortBy("createdAt")}
+            title="sort by creation date"
+          >
             Sort by creation date
           </button>
-          <button onClick={() => setSortBy("dueDate")}>Sort by due date</button>
+          <button onClick={() => setSortBy("dueDate")} title="sort by due date">
+            Sort by due date
+          </button>
         </div>
       </div>
 

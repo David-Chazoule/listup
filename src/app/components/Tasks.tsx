@@ -1,8 +1,7 @@
-import Image from "next/image";
 import React from "react";
-import edit from "../../styles/img/edit.png";
-import cancel from "../../styles/img/cancel.png";
+
 import styles from "../../styles/task.module.scss";
+import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
 type TaskProps = {
   id: string;
@@ -48,14 +47,14 @@ function Tasks({
         <div
           className={`${styles.card} ${completed ? styles.taskCompleted : ""}`}
         >
-          <span className={styles.taskCheck}>
+          <label className={styles.taskCheck}>
             <input
               type="checkbox"
               checked={completed}
               onChange={handleCheckboxChange}
             />
             <p className={completed ? styles.completedText : ""}>{text}</p>
-          </span>
+          </label>
           <span>
             <p className={completed ? styles.completedText : ""}>
               {formatDate(createdAt)}
@@ -69,19 +68,20 @@ function Tasks({
           </span>
 
           <span className={styles.img_container}>
-            <Image
-              src={edit}
-              alt="edit-logo"
+            <FaEdit
+              className={completed ? styles.editCustom : styles.iconEdit}
               onClick={() =>
                 openModal("edit", { id, text, createdAt, dueDate, completed })
               }
+              title="edit task"
             />
-            <Image
-              src={cancel}
-              alt="cancel-logo"
+
+            <FaTrashAlt
+              className={styles.iconDelete}
               onClick={() =>
                 openModal("delete", { id, text, createdAt, dueDate, completed })
               }
+              title="delete task"
             />
           </span>
         </div>

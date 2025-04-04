@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import styles from "../../styles/modal.module.scss";
 import axios from "axios";
 import { Task } from "./TodoForm";
+
 type ModalProps = {
   type: "add" | "edit" | "delete";
-  task: Task | undefined; 
+  task: Task | undefined;
   refreshTasks: () => void;
   closeModal: () => void;
 };
@@ -29,7 +30,7 @@ function Modal({ type, task, closeModal, refreshTasks }: ModalProps) {
       }
 
       refreshTasks();
-      closeModal(); 
+      closeModal();
     } catch (error) {
       console.error("Erreur lors de la requête :", error);
     }
@@ -46,10 +47,11 @@ function Modal({ type, task, closeModal, refreshTasks }: ModalProps) {
         </h2>
 
         {type !== "delete" ? (
-          <>
+          <div className={styles.input_container}>
             <input
               type="text"
               placeholder="Task description"
+              className={styles.inputTask}
               value={text}
               onChange={(e) => setText(e.target.value)}
             />
@@ -58,7 +60,7 @@ function Modal({ type, task, closeModal, refreshTasks }: ModalProps) {
               value={dueDate}
               onChange={(e) => setDueDate(e.target.value)}
             />
-          </>
+          </div>
         ) : (
           <p>Are you sure you want to delete this task?</p>
         )}

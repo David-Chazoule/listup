@@ -9,7 +9,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    // margin: 12px 0;
+
     align-items: center;
 
     .card {
@@ -20,7 +20,6 @@
       padding: 14px;
       background-color: white;
       border-bottom: 1px solid black;
-      // border-radius: 10px;
 
       .img_container {
         display: flex;
@@ -28,24 +27,41 @@
         align-items: center;
         justify-content: flex-start;
 
-        img {
+        .iconEdit {
           width: 20px;
+          color: rgb(14, 117, 14);
           height: auto;
           margin: 4px;
           cursor: pointer;
+          font-weight: 100;
+        }
+
+        .iconDelete {
+          width: 20px;
+          color: red;
+          height: auto;
+          margin: 4px;
+          cursor: pointer;
+          font-weight: 100;
+        }
+
+        .editCustom {
+          opacity: 0;
+          visibility: visible;
+          pointer-events: none;
+          position: relative;
+          z-index: 1;
+          cursor: none;
         }
       }
     }
 
-    .taskCompleted{
-      background-color: #E0E0E0;
-     
-      
+    .taskCompleted {
+      background-color: #e0e0e0;
 
       .completedText {
         text-decoration: line-through;
       }
-    
     }
 
     .taskCheck {
@@ -53,9 +69,15 @@
       align-items: center;
       justify-content: flex-start;
       width: 160px;
-
+      cursor: pointer;
+      p {
+        font-weight: 500;
+      }
       input {
         margin: 0 4px 0 0;
+        &:checked {
+          accent-color: #6971cb;
+        }
       }
     }
 
@@ -70,6 +92,4 @@
       }
     }
   }
-
-  
 }
