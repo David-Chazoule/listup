@@ -5,8 +5,12 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
+        <h1>
+          Organize smarter, not harder. ListUp—where productivity meets
+          minimalist design.
+        </h1>
         <Link href="/todo">
-          <button>entrer</button>
+          <button>ENTRER</button>
         </Link>
       </main>
     </div>

@@ -1,6 +1,14 @@
 .header_container {
   display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  min-height: 6vh;
+  min-height: 10vh;
   background-color: rgb(48, 47, 47);
+
+  .logo {
+    width: 10%;
+    height: auto;
+    margin: 10px;
+  }
 }
