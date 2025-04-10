@@ -156,10 +156,10 @@ function TodoForm() {
             onClick={() => setSortBy("createdAt")}
             title="sort by creation date"
           >
-            Sort by creation date
+            Sort/creation date
           </button>
           <button onClick={() => setSortBy("dueDate")} title="sort by due date">
-            Sort by due date
+            Sort/due date
           </button>
         </div>
       </div>
