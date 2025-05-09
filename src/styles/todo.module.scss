@@ -16,6 +16,10 @@
     margin-bottom: 2vh;
     margin-top: 4vh;
 
+     @media screen and (max-width: 900px) {
+    width: 800px;
+  }
+
     button {
       width: 160px;
       background-color: #6971cb;
@@ -25,6 +29,11 @@
       font-weight: 800;
       font-size: 14px;
       cursor: pointer;
+
+         @media screen and (max-width: 900px) {
+    width: 120px;
+  }
+
 
       &:hover {
         background-color: white;
@@ -44,6 +53,10 @@
     -webkit-box-shadow: -1px 0px 13px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: -1px 0px 13px 0px rgba(0, 0, 0, 0.75);
     box-shadow: -1px 0px 13px 0px rgba(0, 0, 0, 0.75);
+
+     @media screen and (max-width: 900px) {
+    width: 98%;
+  }
 
     .titleTask {
       display: flex;
