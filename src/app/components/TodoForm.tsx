@@ -102,8 +102,8 @@ function TodoForm() {
         </button>
       </div>
       <div className={styles.tasksContainer}>
-        <div className={styles.titleTask}>
-          <span>
+        <div className={styles.titlesTask}>
+          <span className={styles.titleTask}>
             <input className={styles.titleInput} type="checkbox" />
             <p>Task</p>
           </span>
@@ -113,7 +113,7 @@ function TodoForm() {
           <span>
             <p>Due Date</p>
           </span>
-          <span>
+          <span className={styles.actionTitle}>
             <p>Action</p>
           </span>
         </div>
@@ -137,6 +137,7 @@ function TodoForm() {
           ))}
         </div>
         <div className={styles.btnFilters}>
+          <div className={styles.btnGroup}>
           <button onClick={() => setCompletedFilter(null)} title="all tasks">
             All tasks
           </button>
@@ -146,6 +147,8 @@ function TodoForm() {
           >
             Finished tasks
           </button>
+          </div >
+          <div className={styles.btnGroup}>
           <button
             onClick={() => setCompletedFilter(false)}
             title=" unfinished tasks"
@@ -158,9 +161,12 @@ function TodoForm() {
           >
             Sort/creation date
           </button>
+          </div >
+          <div className={styles.lastBtn}>
           <button onClick={() => setSortBy("dueDate")} title="sort by due date">
             Sort/due date
           </button>
+          </div>
         </div>
       </div>
 

@@ -16,9 +16,11 @@
     margin-bottom: 2vh;
     margin-top: 4vh;
 
-     @media screen and (max-width: 900px) {
-    width: 800px;
-  }
+    @media screen and (max-width: 500px) {
+      width: 100%;
+      align-items: center;
+      margin-top: 2vh;
+    }
 
     button {
       width: 160px;
@@ -29,11 +31,6 @@
       font-weight: 800;
       font-size: 14px;
       cursor: pointer;
-
-         @media screen and (max-width: 900px) {
-    width: 120px;
-  }
-
 
       &:hover {
         background-color: white;
@@ -54,11 +51,11 @@
     -moz-box-shadow: -1px 0px 13px 0px rgba(0, 0, 0, 0.75);
     box-shadow: -1px 0px 13px 0px rgba(0, 0, 0, 0.75);
 
-     @media screen and (max-width: 900px) {
-    width: 98%;
-  }
+    @media screen and (max-width: 900px) {
+      width: 98%;
+    }
 
-    .titleTask {
+    .titlesTask {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -73,8 +70,17 @@
         align-items: center;
         justify-content: flex-start;
 
+        @media screen and (max-width: 500px) {
+          width: 100%;
+          justify-content: center;
+        }
+
         p {
           font-weight: 700;
+
+          @media screen and (max-width: 500px) {
+            font-size: 14px;
+          }
         }
 
         .titleInput[type="checkbox"] {
@@ -93,6 +99,21 @@
           }
         }
       }
+      .actionTitle {
+        @media screen and (max-width: 500px) {
+          width: 100px;
+          display: flex;
+          justify-content: center;
+          margin-right: 6px;
+        }
+      }
+
+      .titleTask {
+        @media screen and (max-width: 500px) {
+          display: flex;
+          justify-content: flex-start;
+        }
+      }
     }
 
     .tasks {
@@ -106,21 +127,67 @@
       padding: 10px;
       width: 100%;
       display: flex;
-      justify-content: space-around;
+      justify-content: center;
       align-items: center;
 
-      button {
-        width: 160px;
-        padding: 2px;
-        border-radius: 10px;
-        background-color: #9197cf;
-        color: white;
-        font-weight: 700;
-        cursor: pointer;
+      @media screen and (max-width: 730px) {
+        flex-direction: column;
+      }
 
-        &:hover {
-          background-color: white;
-          color: #af7eeb;
+      .btnGroup {
+        display: flex;
+        width: 300px;
+        align-items: center;
+        justify-content: center;
+
+        @media screen and (max-width: 730px) {
+          justify-content: space-between;
+        }
+
+        button {
+          width: 140px;
+          padding: 2px;
+          border-radius: 10px;
+          background-color: #9197cf;
+          color: white;
+          font-weight: 700;
+          cursor: pointer;
+          margin: 4px;
+
+          @media screen and (max-width: 700px) {
+            width: 100%;
+          }
+
+          &:hover {
+            background-color: white;
+            color: #af7eeb;
+          }
+        }
+      }
+
+      .lastBtn {
+        display: flex;
+        width: 140px;
+        align-items: center;
+        justify-content: center;
+        button {
+          width: 140px;
+          padding: 2px;
+          border-radius: 10px;
+          background-color: #9197cf;
+          color: white;
+          font-weight: 700;
+          cursor: pointer;
+          margin: 4px;
+
+          @media screen and (max-width: 900px) {
+            width: 100%;
+          }
+
+          &:hover {
+            background-color: white;
+            color: #af7eeb;
+          }
         }
       }
     }
