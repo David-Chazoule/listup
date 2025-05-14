@@ -3,6 +3,7 @@ import styles from "../../styles/todo.module.scss";
 import Tasks from "../components/Tasks";
 import axios from "axios";
 import Modal from "./Modal";
+import { FourSquare } from "react-loading-indicators";
 export type Task = {
   id: string;
   text: string;
@@ -18,9 +19,11 @@ function TodoForm() {
   const [sortBy, setSortBy] = useState<"createdAt" | "dueDate" | null>(null);
   const [selectedTask, setSelectedTask] = useState<Task | undefined>(undefined);
   const [modalType, setModalType] = useState<"add" | "edit" | "delete">("add");
+  const [loading, setLoading] = useState<boolean>(false);
 
   const fetchTasks = async () => {
     try {
+      setLoading(true);
       const url = new URL("http://localhost:3000/api/tasks");
 
       if (completedFilter !== null) {
@@ -53,6 +56,8 @@ function TodoForm() {
       setListTasks(sortedTasks);
     } catch (error) {
       console.error("Error fetching tasks:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -119,6 +124,12 @@ function TodoForm() {
         </div>
 
         <div className={styles.tasks}>
+          {loading && (
+            <div className={styles.loading}>
+              <FourSquare color="#6971cb" size="medium" text="" textColor="" />
+            </div>
+          )}
+
           {listTasks?.map((task) => (
             <Tasks
               key={task.id}
@@ -138,34 +149,37 @@ function TodoForm() {
         </div>
         <div className={styles.btnFilters}>
           <div className={styles.btnGroup}>
-          <button onClick={() => setCompletedFilter(null)} title="all tasks">
-            All tasks
-          </button>
-          <button
-            onClick={() => setCompletedFilter(true)}
-            title="finished tasks"
-          >
-            Finished tasks
-          </button>
-          </div >
+            <button onClick={() => setCompletedFilter(null)} title="all tasks">
+              All tasks
+            </button>
+            <button
+              onClick={() => setCompletedFilter(true)}
+              title="finished tasks"
+            >
+              Finished tasks
+            </button>
+          </div>
           <div className={styles.btnGroup}>
-          <button
-            onClick={() => setCompletedFilter(false)}
-            title=" unfinished tasks"
-          >
-            Unfinished tasks
-          </button>
-          <button
-            onClick={() => setSortBy("createdAt")}
-            title="sort by creation date"
-          >
-            Sort/creation date
-          </button>
-          </div >
+            <button
+              onClick={() => setCompletedFilter(false)}
+              title=" unfinished tasks"
+            >
+              Unfinished tasks
+            </button>
+            <button
+              onClick={() => setSortBy("createdAt")}
+              title="sort by creation date"
+            >
+              Sort/creation date
+            </button>
+          </div>
           <div className={styles.lastBtn}>
-          <button onClick={() => setSortBy("dueDate")} title="sort by due date">
-            Sort/due date
-          </button>
+            <button
+              onClick={() => setSortBy("dueDate")}
+              title="sort by due date"
+            >
+              Sort/due date
+            </button>
           </div>
         </div>
       </div>

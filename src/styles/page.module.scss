@@ -6,22 +6,32 @@
   min-height: 90vh;
   background-color: black;
 
-  .main{
+  .main {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    
 
-    h1{
+    h1 {
       color: #6971cb;
       margin-bottom: 10vh;
+      text-align: center;
+      @media screen and (max-width: 700px) {
+         
+        font-size: 24px;
+        }
+
+      span {
+        color: white;
+      }
     }
 
     button {
       width: 200px;
       padding: 18px 10px;
       background-color: #6971cb;
-       border-radius: 20px;
+      border-radius: 20px;
       color: white;
       font-weight: 800;
       font-size: 14px;
@@ -32,8 +42,5 @@
         color: #6971cb;
       }
     }
-
   }
-
- 
 }

@@ -6,8 +6,10 @@ export default function Home() {
     <div className={styles.page}>
       <main className={styles.main}>
         <h1>
-          Organize smarter, not harder. ListUp—where productivity meets
-          minimalist design.
+          Organize smarter, <span>not harder.</span>
+          <br />
+          List <span>Up— </span> where productivity meets{" "}
+          <span>minimalist design.</span>
         </h1>
         <Link href="/todo">
           <button>ENTRER</button>
