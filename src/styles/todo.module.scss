@@ -63,6 +63,12 @@
 
     @media screen and (max-width: 900px) {
       width: 98%;
+    
+    }
+
+     @media screen and (max-width: 500px) {
+      width: 98%;
+       border-radius:10px 10px 0 0;
     }
 
     .titlesTask {
@@ -73,6 +79,10 @@
       width: 100%;
       padding: 10px;
       border-radius: 20px;
+
+       @media screen and (max-width: 500px) {
+      border-radius: none;
+    }
 
       span {
         display: flex;
