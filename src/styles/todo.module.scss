@@ -16,6 +16,10 @@
     margin-bottom: 2vh;
     margin-top: 4vh;
 
+    @media screen and (max-width: 900px) {
+      width: 100%;
+    }
+
     @media screen and (max-width: 500px) {
       width: 100%;
       align-items: center;
@@ -35,6 +39,12 @@
       &:hover {
         background-color: white;
         color: #6971cb;
+      }
+      @media screen and (max-width: 900px) {
+        margin-left: 10px;
+      }
+      @media screen and (max-width: 500px) {
+        margin-left: 0;
       }
     }
   }

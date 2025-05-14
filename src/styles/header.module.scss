@@ -7,8 +7,12 @@
   background-color: rgb(48, 47, 47);
 
   .logo {
-    width: 10%;
+    width: 180px;
     height: auto;
     margin: 10px;
+
+    @media screen and (max-width: 500px) {
+      width: 140px;
+    }
   }
 }
