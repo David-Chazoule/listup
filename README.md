@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# List-Up
 
-## Getting Started
+<img src="https://github.com/David-Chazoule/BodyMeasure/raw/master/src/preview/bodymesure1.PNG" style="width:400px; height:auto;" >  <img src="https://github.com/David-Chazoule/BodyMeasure/raw/master/src/preview/bodymesure2.PNG" alt="Body Measure Screenshot 2" style="width:400px; height:auto;">
+<img src="https://github.com/David-Chazoule/BodyMeasure/raw/master/src/preview/bodymesure3.PNG" alt="Body Measure Screenshot 3" style="width:400px; height:auto;">  <img src="https://github.com/David-Chazoule/BodyMeasure/raw/master/src/preview/bodymesure4.PNG" alt="Body Measure Screenshot 4" style="width:400px; height:auto;">
 
-First, run the development server:
 
+
+# List-up – Task Manager App
+
+List-up is a full-featured task management web application that allows you to create, edit, delete, and validate tasks. It also provides advanced filtering and sorting options to help you stay organized and focused.
+
+
+## Technologies Used
+
+The application has been developed using:
+- **Next.js**
+- -**Prisma** (for backend and database)
+- **Sass**
+
+
+## Installation and Execution
+
+To set up and run the application locally, follow these steps:
+
+1. **Install dependencies:**
+```bash
+npm install
+```
+2. **Initialize the database:**
+```bash
+npx prisma generate
+npx prisma migrate dev
+```
+3. **Start the application:**
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
+Here's an overview of the project structure:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**prisma/:** *Prisma schema and database logic.*
 
-## Learn More
+**App/:** *Main pages and routes (Next.js).*
 
-To learn more about Next.js, take a look at the following resources:
+**components/:** *Reusable UI components.*
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**styles/:** *Sass files for styling.*
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+##Features
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **Add new tasks**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2. **Edit and delete tasks**
+
+3. **Mark tasks as completed**
+
+4. **Filter tasks by status:**
+
+- Completed
+
+- Not completed
+
+5. **Sort tasks by:**
+
+- Creation date
+
+- Due date
+
+
