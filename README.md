@@ -14,7 +14,7 @@ List-up is a full-featured task management web application that allows you to cr
 
 The application has been developed using:
 - **Next.js**
-- -**Prisma** (for backend and database)
+- **Prisma** (for backend and database)
 - **Sass**
 
 
