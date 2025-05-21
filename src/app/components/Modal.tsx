@@ -3,34 +3,39 @@ import styles from "../../styles/modal.module.scss";
 import axios from "axios";
 import { Task } from "./TodoForm";
 
+// Définition des props du composant Modal
 type ModalProps = {
-  type: "add" | "edit" | "delete";
-  task: Task | undefined;
-  refreshTasks: () => void;
-  closeModal: () => void;
+  type: "add" | "edit" | "delete"; // Type de modal (ajout, édition ou suppression)
+  task: Task | undefined; // Tâche à éditer/supprimer (undefined pour l'ajout)
+  refreshTasks: () => void; // Fonction pour rafraîchir la liste des tâches
+  closeModal: () => void; // Fonction pour fermer la modal
 };
 
 function Modal({ type, task, closeModal, refreshTasks }: ModalProps) {
+  // États pour gérer les champs du formulaire
   const [text, setText] = useState(task?.text || "");
   const [dueDate, setDueDate] = useState(task?.dueDate || "");
 
+  // Gestion de la soumission du formulaire
   const handleSubmit = async () => {
     try {
+      // Envoi de la requête en fonction du type de modal
       if (type === "add") {
-        await axios.post("/api/tasks", { text, dueDate });
+        await axios.post("/api/tasks", { text, dueDate }); // Création
       } else if (type === "edit" && task) {
         await axios.put("/api/tasks", {
+          // Mise à jour
           id: task.id,
           text,
           dueDate,
-          completed: task.completed,
+          completed: task.completed, // On conserve le statut existant
         });
       } else if (type === "delete" && task) {
-        await axios.delete("/api/tasks", { data: { id: task.id } });
+        await axios.delete("/api/tasks", { data: { id: task.id } }); // Suppression
       }
 
-      refreshTasks();
-      closeModal();
+      refreshTasks(); // Rafraîchit la liste des tâches
+      closeModal(); // Ferme la modal
     } catch (error) {
       console.error("Erreur lors de la requête :", error);
     }
