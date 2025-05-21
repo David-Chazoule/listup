@@ -1,7 +1,7 @@
 # List-Up
 
-<img src="https://github.com/David-Chazoule/BodyMeasure/raw/master/src/preview/bodymesure1.PNG" style="width:400px; height:auto;" >  <img src="https://github.com/David-Chazoule/BodyMeasure/raw/master/src/preview/bodymesure2.PNG" alt="Body Measure Screenshot 2" style="width:400px; height:auto;">
-<img src="https://github.com/David-Chazoule/BodyMeasure/raw/master/src/preview/bodymesure3.PNG" alt="Body Measure Screenshot 3" style="width:400px; height:auto;">  <img src="https://github.com/David-Chazoule/BodyMeasure/raw/master/src/preview/bodymesure4.PNG" alt="Body Measure Screenshot 4" style="width:400px; height:auto;">
+<img src="https://i.imgur.com/iQhxi11.png" style="width:400px; height:auto;" >  <img src="https://i.imgur.com/TsqbMwR.png" alt="Body Measure Screenshot 2" style="width:400px; height:auto;">
+<img src="https://i.imgur.com/NlzGBQ4.png" alt="Body Measure Screenshot 3" style="width:400px; height:auto;">  <img src="https://i.imgur.com/0tIgZfG.png" alt="Body Measure Screenshot 4" style="width:400px; height:auto;">
 
 
 
