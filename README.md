@@ -49,7 +49,7 @@ Here's an overview of the project structure:
 **styles/:** *Sass files for styling.*
 
 
-##Features
+## Features
 
 1. **Add new tasks**
 
